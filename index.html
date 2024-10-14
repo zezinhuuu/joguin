@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Adivinhação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Isso não é sobre um joguinho!!</h1>
+    <p>Adivinhe um número entre 1 e 100!</p>
+    <input type="number" id="palpite" min="1" max="100">
+    <button onclick="checar()">Enviar</button>
+    <p id="mensagem"></p>
+    <script>
+        const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+        let tentativas = 0;
+
+        function checar() {
+            const palpite = Number(document.getElementById('palpite').value);
+            tentativas++;
+            const mensagem = document.getElementById('mensagem');
+            if (palpite === numeroAleatorio) {
+                mensagem.innerHTML = `
+                    <p>Você acertou!</p>
+                    <p>Esse é o tanto de vezes em que ela pensou em outro enquanto você se culpava por ser insuficiente como todas as vezes que tentou amar alguém:</p>
+                    <p>${numeroAleatorio}.</p>
+                    <p>Número de tentativas que você teve mesmo sabendo que o resultado sempre seria de que ela não te amava:</p>
+                    <p>${tentativas}.</p>
+                `;
+            } else if (palpite < numeroAleatorio) {
+                mensagem.textContent = 'Tente um número maior que o amor que ainda sente por ela.';
+            } else {
+                mensagem.textContent = 'Tente um número menor que a consideração que ela teve por você.';
+            }
+        }
+    </script>
+</body>
+</html>
